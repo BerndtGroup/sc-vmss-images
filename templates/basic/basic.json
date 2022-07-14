@@ -31,13 +31,13 @@
                 "type": "PowerShell",
                 "name": "InstallChoco",
                 "runElevated": true,
-                "scriptUri": "https://raw.githubusercontent.com/Berndtgroup/VMSS/main/scripts/Install-Choco.ps1"
+                "scriptUri": "https://raw.githubusercontent.com/Berndtgroup/sc-vmss-images/main/scripts/Install-Choco.ps1"
             },
             {
                 "type": "PowerShell",
                 "name": "InstallDocker",
                 "runElevated": true,
-                "scriptUri": "https://raw.githubusercontent.com/Berndtgroup/VMSS/main/scripts/Install-Docker.ps1"
+                "scriptUri": "https://raw.githubusercontent.com/Berndtgroup/sc-vmss-images/main/scripts/Install-Docker.ps1"
             },
             {
                 "type": "WindowsRestart",
