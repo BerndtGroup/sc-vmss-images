@@ -27,16 +27,36 @@ $dockerCredArchive = Start-DownloadWithRetry -Url $dockerCredDownloadUrl
 Expand-Archive -Path $dockerCredArchive -DestinationPath "C:\Program Files\Docker"
 
 Write-Host "Download docker images"
+$sitecoreVersion = $env:SC_VERSION
+if ($null -eq $sitecoreVersion) {
+    $sitecoreVersion = '10.2'
+}
 $dockerImages = @(
     "mcr.microsoft.com/dotnet/core/sdk:3.1",
     "mcr.microsoft.com/dotnet/framework/sdk:4.8"
     "mcr.microsoft.com/windows/nanoserver:1809",
-    "scr.sitecore.com/sitecore-redis:$SitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sitecore-xp1-mssql:$SitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sitecore-xp1-solr:$SitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sitecore-xp1-solr-init:$SitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sitecore-xp1-cd:$SitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sitecore-xp1-cm:$SitecoreVersion-ltsc2019"
+    "scr.sitecore.com/sitecore-redis:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-mssql:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-solr:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-solr-init:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-cd:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-cm:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-cortexprocessing:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-cortexprocessingworker:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-cortexreporting:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-prc:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-xdbautomation:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-xdbautomationrpt:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-xdbautomationworker:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-xdbcollection:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-xdbrefdata:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-xdbsearch:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xp1-xdbsearchworker:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xm1-mssql:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xm1-solr:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xm1-solr-init:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xm1-cd:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sitecore-xm1-cm:$sitecoreVersion-ltsc2019"
 )
 
 foreach ($dockerImage in $dockerImages) {
