@@ -9,8 +9,10 @@
 # fatal: open C:\ProgramData\docker\panic.log: Access is denied.
 Write-Host "Install-Package Docker"
  
-Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
-Install-Package -Name docker -ProviderName DockerMsftProvider -RequiredVersion 20.10.7 -Force
+# Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
+# Install-Package -Name docker -ProviderName DockerMsftProvider -RequiredVersion 20.10.7 -Force
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1
+.\install-docker-ce.ps1
 Start-Service docker
 
 Write-Host "Install-Package Docker-Compose v1"
