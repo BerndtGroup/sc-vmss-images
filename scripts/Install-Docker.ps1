@@ -23,7 +23,7 @@ $dockerImages = @(
     "mcr.microsoft.com/windows/nanoserver:1809",
     "scr.sitecore.com/sxp/sitecore-redis:$sitecoreVersion-ltsc2019",
     "scr.sitecore.com/sxp/sitecore-xp1-mssql:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-solr:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sxp/nonproduction/sitecore-xp1-solr:$sitecoreVersion-ltsc2019",
     "scr.sitecore.com/sxp/sitecore-xp1-solr-init:$sitecoreVersion-ltsc2019",
     "scr.sitecore.com/sxp/sitecore-xp1-cd:$sitecoreVersion-ltsc2019",
     "scr.sitecore.com/sxp/sitecore-xp1-cm:$sitecoreVersion-ltsc2019",
@@ -39,7 +39,7 @@ $dockerImages = @(
     "scr.sitecore.com/sxp/sitecore-xp1-xdbsearch:$sitecoreVersion-ltsc2019",
     "scr.sitecore.com/sxp/sitecore-xp1-xdbsearchworker:$sitecoreVersion-ltsc2019",
     "scr.sitecore.com/sxp/sitecore-xm1-mssql:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xm1-solr:$sitecoreVersion-ltsc2019",
+    "scr.sitecore.com/sxp/nonproduction/sitecore-xm1-solr:$sitecoreVersion-ltsc2019",
     "scr.sitecore.com/sxp/sitecore-xm1-solr-init:$sitecoreVersion-ltsc2019",
     "scr.sitecore.com/sxp/sitecore-xm1-cd:$sitecoreVersion-ltsc2019",
     "scr.sitecore.com/sxp/sitecore-xm1-cm:$sitecoreVersion-ltsc2019"
