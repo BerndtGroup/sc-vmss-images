@@ -14,34 +14,44 @@ Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/
 
 Write-Host "Download docker images"
 $sitecoreVersion = $env:SC_VERSION
+$solrVersion = $env:SOLR_VERSION
+$winServerVersion = $env:WIN_VERSION
 if ($null -eq $sitecoreVersion) {
     $sitecoreVersion = '10.2'
+}
+if ($null -eq $solrVersion) {
+    $solrVersion = '8.4.0'
+}
+if ($null -eq $winServerVersion) {
+    $winServerVersion = 'ltsc2019'
 }
 $dockerImages = @(
     "mcr.microsoft.com/dotnet/core/sdk:3.1",
     "mcr.microsoft.com/dotnet/framework/sdk:4.8"
     "mcr.microsoft.com/windows/nanoserver:1809",
-    "scr.sitecore.com/sxp/sitecore-redis:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-mssql:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/nonproduction/solr:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-solr-init:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-cd:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-cm:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-cortexprocessing:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-cortexprocessingworker:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-cortexreporting:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-prc:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-xdbautomation:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-xdbautomationrpt:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-xdbautomationworker:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-xdbcollection:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-xdbrefdata:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-xdbsearch:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xp1-xdbsearchworker:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xm1-mssql:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xm1-solr-init:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xm1-cd:$sitecoreVersion-ltsc2019",
-    "scr.sitecore.com/sxp/sitecore-xm1-cm:$sitecoreVersion-ltsc2019"
+    "scr.sitecore.com/sxp/sitecore-id:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-id6:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/nonproduction/solr:-$solrVersion-$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-redis:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-mssql:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-solr-init:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-cd:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-cm:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-cortexprocessing:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-cortexprocessingworker:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-cortexreporting:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-prc:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-xdbautomation:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-xdbautomationrpt:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-xdbautomationworker:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-xdbcollection:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-xdbrefdata:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-xdbsearch:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xp1-xdbsearchworker:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xm1-mssql:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xm1-solr-init:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xm1-cd:$sitecoreVersion-$winServerVersion",
+    "scr.sitecore.com/sxp/sitecore-xm1-cm:$sitecoreVersion-$winServerVersion"
 )
 
 foreach ($dockerImage in $dockerImages) {
